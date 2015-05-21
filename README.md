@@ -4,7 +4,7 @@
 ### What it does
 * [Jade](http://jade-lang.com) files to HTML
 * [Stylus](http://learnboost.github.io/stylus) files to CSS
-* [ES6+ JavaScript](babeljs.io) files to ES5 Javascript through [browserify](http://browserify.org/)
+* [CoffeeScript](http://coffeescript.org/) files to Javascript through [browserify](http://browserify.org/)
     * You are able to use 'require' in your client-side code
 * Serves your static files to localhost:9001
 * Reloads your browser with LiveReload when files change
@@ -18,7 +18,7 @@
  npm install
  npm start
  open http://localhost:9001 in your browser
-```
+````
 
 ## CLI Commands
 * npm install
@@ -28,7 +28,6 @@
 * npm run build
     * Builds everything
 
-# Production build
 Minification, uglification and other tasks you're expected to run before deploying your product can be made by running the build command with env variable NODE_ENV set to "production"
 
     NODE_ENV=production npm run build
@@ -38,6 +37,7 @@ Minification, uglification and other tasks you're expected to run before deployi
 
 **public** - directory should be dedicated only to compiled/copied files from **src** - directory.
   It should be possible to delete directory completely and after **npm start** or **npm run build** everything should be as they were before the deletion.
+
 
 #### Dependencies
 All dependencies are meant to be installed with **bower** or with **npm**.
