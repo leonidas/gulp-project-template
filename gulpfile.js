@@ -65,10 +65,12 @@ var browserifyConfig = {
 function handleError(err) {
   gutil.log(err);
   gutil.beep();
-  notify({
+
+  notifier.notify({
     title: 'Compile Error',
     message: err.message
   });
+
   return this.emit('end');
 }
 
