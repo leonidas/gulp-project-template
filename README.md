@@ -14,7 +14,7 @@
 - Install [Node.js](http://nodejs.org)
 
 ```
- git clone git@github.com:leonidas/gulp-project-template.git <your project name>
+ git clone git@github.com:leonidas/gulp-project-template.git -b coffee <your project name>
  cd <your project name>
  npm install
  npm start
