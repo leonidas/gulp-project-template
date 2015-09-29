@@ -1,5 +1,3 @@
-'use strict';
-
 import {getCommits, getRepo} from './services/github';
 import {render} from './components/repository';
 
