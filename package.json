@@ -27,6 +27,7 @@
     "gulp": "~3.8.1",
     "gulp-autoprefixer": "1.0.1",
     "gulp-duration": "0.0.0",
+    "gulp-inject": "^3.0.0",
     "gulp-jade": "~0.9.0",
     "gulp-replace": "^0.5.3",
     "gulp-rev": "^4.0.0",
