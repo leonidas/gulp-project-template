@@ -1,33 +1,28 @@
-/*eslint "no-var":0 */
-'use strict';
-
-var browserify = require('browserify');
-var browserSync = require('browser-sync');
-var duration = require('gulp-duration');
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var jade = require('gulp-jade');
-var notifier = require('node-notifier');
-var path = require('path');
-var prefix = require('gulp-autoprefixer');
-var replace = require('gulp-replace');
-var rev = require('gulp-rev');
-var rimraf = require('rimraf');
-var source = require('vinyl-source-stream');
-var exorcist = require('exorcist');
-var transform  = require('vinyl-transform');
-var sourcemaps = require('gulp-sourcemaps');
-var streamify = require('gulp-streamify');
-var stylus = require('gulp-stylus');
-var uglify = require('gulp-uglify');
-var watchify = require('watchify');
-var watch = require('gulp-watch');
-var inject = require('gulp-inject');
+import browserify from 'browserify';
+import browserSync from 'browser-sync';
+import duration from 'gulp-duration';
+import gulp from 'gulp';
+import gutil from 'gulp-util';
+import jade from 'gulp-jade';
+import notifier from 'node-notifier';
+import path from 'path';
+import prefix from 'gulp-autoprefixer';
+import rev from 'gulp-rev';
+import source from 'vinyl-source-stream';
+import exorcist from 'exorcist';
+import transform from 'vinyl-transform';
+import sourcemaps from 'gulp-sourcemaps';
+import streamify from 'gulp-streamify';
+import stylus from 'gulp-stylus';
+import uglify from 'gulp-uglify';
+import watchify from 'watchify';
+import watch from 'gulp-watch';
+import inject from 'gulp-inject';
 
 /*eslint "no-process-env":0 */
-var production = process.env.NODE_ENV === 'production';
+const production = process.env.NODE_ENV === 'production';
 
-var config = {
+const config = {
   source: './src',
   destination: './public',
   scripts: {
@@ -57,7 +52,7 @@ var config = {
   }
 };
 
-var browserifyConfig = {
+const browserifyConfig = {
   entries: [config.scripts.source],
   extensions: config.scripts.extensions,
   debug: !production,
@@ -75,8 +70,8 @@ function handleError(err) {
   return this.emit('end');
 }
 
-gulp.task('scripts', function() {
-  var pipeline = browserify(browserifyConfig)
+gulp.task('scripts', () => {
+  let pipeline = browserify(browserifyConfig)
     .bundle()
     .on('error', handleError)
     .pipe(source(config.scripts.filename));
@@ -86,18 +81,18 @@ gulp.task('scripts', function() {
       .pipe(streamify(uglify()))
       .pipe(streamify(rev()));
   } else {
-    pipeline = pipeline.pipe(transform(function() {
-      return exorcist(config.scripts.destination + config.scripts.filename + '.map');
-    }))
+    pipeline = pipeline.pipe(transform(() => {
+      return exorcist(path.join(config.scripts.destination, config.scripts.filename) + '.map');
+    }));
   }
 
   return pipeline.pipe(gulp.dest(config.scripts.destination));
 });
 
-gulp.task('templates', production ? ['styles', 'scripts'] : [], function() {
-  var resources = gulp.src(config.inject.resources, {read: false});
+gulp.task('templates', production ? ['styles', 'scripts'] : [], () => {
+  const resources = gulp.src(config.inject.resources, {read: false});
 
-  var pipeline = gulp.src(config.templates.source)
+  const pipeline = gulp.src(config.templates.source)
   .pipe(jade({
     pretty: !production
   }))
@@ -114,8 +109,8 @@ gulp.task('templates', production ? ['styles', 'scripts'] : [], function() {
   }));
 });
 
-gulp.task('styles', function() {
-  var pipeline = gulp.src(config.styles.source);
+gulp.task('styles', () => {
+  let pipeline = gulp.src(config.styles.source);
 
   if(!production) {
     pipeline = pipeline.pipe(sourcemaps.init());
@@ -146,12 +141,12 @@ gulp.task('styles', function() {
   }));
 });
 
-gulp.task('assets', function() {
+gulp.task('assets', () => {
   return gulp.src(config.assets.source)
     .pipe(gulp.dest(config.assets.destination));
 });
 
-gulp.task('server', function() {
+gulp.task('server', () => {
   return browserSync({
     open: false,
     port: 9001,
@@ -163,23 +158,23 @@ gulp.task('server', function() {
   });
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', () => {
 
-  ['templates', 'styles', 'assets'].forEach(function(watched) {
-    watch(config[watched].watch, function() {
+  ['templates', 'styles', 'assets'].forEach((watched) => {
+    watch(config[watched].watch, () => {
       gulp.start(watched);
     });
   });
 
-  var bundle = watchify(browserify(browserifyConfig));
+  const bundle = watchify(browserify(browserifyConfig));
 
-  bundle.on('update', function() {
-    var build = bundle.bundle()
+  bundle.on('update', () => {
+    const build = bundle.bundle()
       .on('error', handleError)
       .pipe(source(config.scripts.filename));
 
     build
-    .pipe(transform(function() {
+    .pipe(transform(() => {
       return exorcist(config.scripts.destination + config.scripts.filename + '.map');
     }))
     .pipe(gulp.dest(config.scripts.destination))
