@@ -89,7 +89,7 @@ gulp.task('scripts', () => {
   return pipeline.pipe(gulp.dest(config.scripts.destination));
 });
 
-gulp.task('templates', production ? ['styles', 'scripts'] : [], () => {
+gulp.task('templates', ['styles', 'scripts'], () => {
   const resources = gulp.src(config.inject.resources, {read: false});
 
   const pipeline = gulp.src(config.templates.source)
