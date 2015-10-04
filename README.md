@@ -54,9 +54,17 @@ All dependencies are meant to be installed with **npm**.
 ---
 
 ## FAQ
+### Should I clear the version history after I clone this repository?
+I would advice against it. Keeping the version history makes it easier to receive updates from this project.
 
 ### I want to use CoffeeScript instead of JavaScript
-Check out the [coffee branch](https://github.com/leonidas/gulp-project-template/tree/coffee)
+Fork this repository and customize it based on your preferences . Please leave an issue about your fork and we'll add it to the list below.
+
+**Known forks**
+
+* [CoffeeScript + Knockout.js](https://github.com/tjyrkinen/gulp-knockout-project-template)
+
+
 
 ## Useful resources
 * [Browserify handbook](https://github.com/substack/browserify-handbook)
