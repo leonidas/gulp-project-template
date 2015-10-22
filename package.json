@@ -6,8 +6,8 @@
   "license": "MIT",
   "main": "gulpfile.js",
   "scripts": {
-    "start": "gulp",
-    "build": "gulp build",
+    "start": "rm -rf public && gulp",
+    "build": "rm -rf public && gulp build",
     "lint": "eslint src",
     "test": "mocha src/**/__tests__/*.js --compilers js:babel/register --require test/test-helper"
   },
