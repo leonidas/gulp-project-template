@@ -9,7 +9,7 @@
     "start": "rm -rf public && gulp",
     "build": "rm -rf public && gulp build",
     "lint": "eslint src",
-    "test": "mocha src/**/__tests__/*.js --compilers js:babel/register --require test/test-helper"
+    "test": "mocha src/**/__tests__/*.js --compilers js:babel-core/register --require test/test-helper"
   },
   "keywords": [
     "gulp",
@@ -19,10 +19,11 @@
     "lodash": "^3.9.1"
   },
   "devDependencies": {
-    "babel": "^5.8.23",
-    "babel-core": "^5.8.25",
+    "babel": "^6.1.18",
+    "babel-core": "^6.2.1",
     "babel-eslint": "^4.1.3",
-    "babelify": "^6.1.1",
+    "babel-preset-es2015": "^6.1.18",
+    "babelify": "^7.2.0",
     "browser-sync": "^2.9.4",
     "browserify": "^10.2.1",
     "chai": "^3.0.0",
@@ -54,11 +55,7 @@
   "browserify": {
     "transform": [
       [
-        "babelify",
-        {
-          "stage": 0,
-          "optional": ["utility.inlineEnvironmentVariables"]
-        }
+        "babelify"
       ]
     ]
   }
