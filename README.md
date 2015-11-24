@@ -62,6 +62,7 @@ Fork this repository and customize it based on your preferences . Please leave a
 
 **Known forks**
 
+* [React + Redux](https://github.com/eetu/gulp-redux-project-template)
 * [CoffeeScript + Knockout.js](https://github.com/tjyrkinen/gulp-knockout-project-template)
 
 
