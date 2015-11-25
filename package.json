@@ -27,6 +27,7 @@
     "browser-sync": "^2.9.4",
     "browserify": "^10.2.1",
     "chai": "^3.0.0",
+    "envify": "^3.4.0",
     "eslint": "^1.5.1",
     "eslint-config-airbnb": "0.0.9",
     "eslint-plugin-react": "^3.4.2",
@@ -56,6 +57,9 @@
     "transform": [
       [
         "babelify"
+      ],
+      [
+        "envify"
       ]
     ]
   }
