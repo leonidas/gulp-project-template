@@ -19,7 +19,7 @@ import watchify from 'watchify';
 import watch from 'gulp-watch';
 import inject from 'gulp-inject';
 
-/*eslint "no-process-env":0 */
+// eslint "no-process-env":0
 const production = process.env.NODE_ENV === 'production';
 
 const config = {
