@@ -24,38 +24,7 @@ import inject from 'gulp-inject';
 // eslint "no-process-env":0
 const production = process.env.NODE_ENV === 'production';
 
-const config = {
-  source: './src',
-  destination: './public',
-  scripts: {
-    source: './src/main.js',
-    destination: './public/js/',
-    extensions: ['.jsx'],
-    filename: 'bundle.js'
-  },
-  templates: {
-    source: './src/*.jade',
-    watch: './src/*.jade',
-    destination: './public/',
-    revision: './public/**/*.html'
-  },
-  styles: {
-    source: './src/**/*.styl',
-    watch: './src/**/*.styl',
-    destination: './public/css/',
-    filename: 'style.css',
-    // Supported browser versions for autoprefixer
-    browserVersions: ['last 2 versions', 'Chrome 34', 'Firefox 28', 'iOS 7']
-  },
-  assets: {
-    source: './src/assets/**/*.*',
-    watch: './src/assets/**/*.*',
-    destination: './public/'
-  },
-  inject: {
-    resources: ['./public/**/*.css', './public/**/*.js']
-  }
-};
+const config = require('./package.json').build;
 
 const browserifyConfig = {
   entries: [config.scripts.source],

@@ -18,6 +18,45 @@
   "dependencies": {
     "lodash": "^3.9.1"
   },
+  "build": {
+    "source":"./src",
+    "destination":"./public",
+    "scripts":{
+      "source":"./src/main.js",
+      "destination":"./public/js/",
+      "extensions":[],
+      "filename":"bundle.js"
+    },
+    "templates":{
+      "source":"./src/*.jade",
+      "watch":"./src/*.jade",
+      "destination":"./public/",
+      "revision":"./public/**/*.html"
+    },
+    "styles":{
+      "source":"./src/**/*.styl",
+      "watch":"./src/**/*.styl",
+      "destination":"./public/css/",
+      "filename":"style.css",
+      "browserVersions":[
+        "last 2 versions",
+        "Chrome 34",
+        "Firefox 28",
+        "iOS 7"
+      ]
+    },
+    "assets":{
+      "source":"./src/assets/**/*.*",
+      "watch":"./src/assets/**/*.*",
+      "destination":"./public/"
+    },
+    "inject":{
+      "resources":[
+        "./public/**/*.css",
+        "./public/**/*.js"
+      ]
+    }
+  },
   "devDependencies": {
     "babel": "^6.1.18",
     "babel-core": "^6.2.1",
