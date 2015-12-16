@@ -9,7 +9,7 @@
 * [ES6+ JavaScript](https://babeljs.io) files to ES5 Javascript through [browserify](http://browserify.org/)
     * You are able to use `import` in your client-side code
 * Uses [BrowserSync](http://www.browsersync.io/) to serve your static files to localhost:9001 and to automatically reload your browser when files change.
-* Hot-swaps modules with [browserify-hrm](https://github.com/AgentME/browserify-hmr). See the [source](https://github.com/leonidas/gulp-project-template/blob/master/src/main.js#L4-L7) for usage.
+* Hot-swaps modules with [browserify-hmr](https://github.com/AgentME/browserify-hmr). See the [source](https://github.com/leonidas/gulp-project-template/blob/master/src/main.js#L4-L7) for usage.
 
 ## Getting things up and running
 - Install [Node.js](http://nodejs.org)
