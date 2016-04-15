@@ -102,7 +102,9 @@ gulp.task('styles', () => {
     compress: production
   }))
   .on('error', handleError)
-  .pipe(prefix(config.styles.browserVersions))
+  .pipe(prefix({
+    browsers: config.styles.browserVersions
+  }))
   .pipe(concat(config.styles.filename));
 
   if(production) {
